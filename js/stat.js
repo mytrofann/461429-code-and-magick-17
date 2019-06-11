@@ -42,8 +42,8 @@ window.renderStatistics = function (ctx, players, times) {
   ctx.font = '16px PT Mono';
   ctx.fillStyle = 'rgba(0, 0, 0, 1)';
   ctx.textBaseline = 'hanging';
-  ctx.fillText('Ура вы победили!', GAP, CLOUD_Y + GAP);
-  ctx.fillText('Список результатов:', GAP, (CLOUD_Y + GAP) * 2);
+  ctx.fillText('Ура вы победили!', CLOUD_X + GAP + GAP, CLOUD_Y + GAP + GAP);
+  ctx.fillText('Список результатов:', CLOUD_X + GAP + GAP, (CLOUD_Y + GAP) * 2 + GAP);
 
   var maxTime = getMaxElement(times);
 
