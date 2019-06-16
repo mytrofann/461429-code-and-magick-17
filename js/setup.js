@@ -3,7 +3,7 @@
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 
-var name = {
+var nameWizard = {
   names: [
     'Иван',
     'Хуан Себастьян',
@@ -53,9 +53,9 @@ var getRandomInt = function (min, max) {
 var similarWizards = function (start, end) {
   var array = [];
 
-  for (var i = 0; i < numberOfWizard - 1; i++) {
+  for (var i = 0; i < numberOfWizard; i++) {
     array[i] = {
-      name: name.names[getRandomInt(start, end)] + ' ' + name.surnames[getRandomInt(start, end)],
+      name: nameWizard.names[getRandomInt(start, end)] + ' ' + nameWizard.surnames[getRandomInt(start, end)],
       coatColor: coatColor[getRandomInt(start, end)],
       eyesColor: eyesColor[getRandomInt(start, end)]
     };
@@ -68,20 +68,21 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template').c
 
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
-  wizardElement.querySelector('.setup-similar-label').textContent(wizard.name);
+  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
   wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
   wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
 
   return wizardElement;
 };
 
-var insertWizard = function (wizards) {
+var insertWizardTemplate = function (wizards) {
   var fragment = document.createDocumentFragment();
   for (var i = 0; i < wizards.length; i++) {
     fragment.appendChild(renderWizard(wizards[i]));
   }
   similarListElement.appendChild(fragment);
 };
-insertWizard(similarWizards(amount.start, amount.end));
+insertWizardTemplate(similarWizards(amount.start, amount.end));
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
+
