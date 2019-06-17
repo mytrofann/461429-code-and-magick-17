@@ -40,7 +40,7 @@ var eyesColor = [
   'yellow',
   'green'
 ];
-var numberOfWizard = 4;
+var NUMBER_WIZARD = 4;
 var amount = {
   start: 0,
   end: 4
@@ -50,10 +50,10 @@ var getRandomInt = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-var similarWizards = function (start, end) {
+var getSimilarWizards = function (start, end) {
   var array = [];
 
-  for (var i = 0; i < numberOfWizard; i++) {
+  for (var i = 0; i < NUMBER_WIZARD; i++) {
     array[i] = {
       name: nameWizard.names[getRandomInt(start, end)] + ' ' + nameWizard.surnames[getRandomInt(start, end)],
       coatColor: coatColor[getRandomInt(start, end)],
@@ -82,7 +82,7 @@ var insertWizardTemplate = function (wizards) {
   }
   similarListElement.appendChild(fragment);
 };
-insertWizardTemplate(similarWizards(amount.start, amount.end));
+insertWizardTemplate(getSimilarWizards(amount.start, amount.end));
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
